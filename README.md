@@ -66,6 +66,20 @@ For `zsh_llm_suggestions_github_copilot` (GitHub Copilot suggestions):
   /usr/bin/gh extension install github/gh-copilot
   ```
 
+For `zsh_llm_suggestions_ollama` (defaults to `llama3` model, on your local GPU):
+- Follow [ollama installation instructions](https://github.com/ollama/ollama?tab=readme-ov-file#ollama)
+- This script will not start ollama.  Make sure it is running:
+  ```
+  ollama serve
+  ```
+  (there are many installation options, like [systemd service](https://github.com/ollama/ollama/blob/main/docs/linux.md#adding-ollama-as-a-startup-service-recommended),
+  and [docker container](https://github.com/ollama/ollama/blob/main/docs/docker.md))
+- Run the setup script to download llama3 model and setup the system prompts:
+  ```
+  ./zsh-llm-suggestions-ollama.py setup
+  ```
+- setup desired keybindings for `zsh_llm_suggestions_ollama` and `zsh_llm_suggestions_ollama_explain`
+
 ## Usage
 
 ### LLM suggested commands
@@ -95,3 +109,4 @@ There are some risks using `zsh-llm-suggestions`:
 Right now, two LLMs are supported:
 1. GitHub Copilot (via GitHub CLI). Requires a GitHub Copilot subscription.
 2. OpenAI. Requires an OpenAI API key. Currently uses `gpt-4-1106-preview`.
+3. Ollama. Requires local GPU and [ollama](https://github.com/ollama/ollama) installed.  Uses llama3 model by default.
